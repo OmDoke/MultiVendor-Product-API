@@ -14,7 +14,7 @@ const adminLogin = async (req, res, next) => {
             });
         }
 
-        const token = jwt.sign(
+        const accessToken = jwt.sign(
             { id: admin._id, role: 'admin' },
             process.env.JWT_SECRET,
             { expiresIn: '1d' }
@@ -24,7 +24,7 @@ const adminLogin = async (req, res, next) => {
             success: true,
             message: 'Login successful',
             data: {
-                token,
+                accessToken,
                 role: 'admin'
             }
         });

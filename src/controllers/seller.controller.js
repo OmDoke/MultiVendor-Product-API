@@ -17,7 +17,7 @@ const sellerLogin = async (req, res, next) => {
             });
         }
 
-        const token = jwt.sign(
+        const accessToken = jwt.sign(
             { id: seller._id, role: 'seller' },
             process.env.JWT_SECRET,
             { expiresIn: '1d' }
@@ -27,7 +27,7 @@ const sellerLogin = async (req, res, next) => {
             success: true,
             message: 'Login successful',
             data: {
-                token,
+                accessToken,
                 role: 'seller'
             }
         });
